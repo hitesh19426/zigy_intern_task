@@ -43,19 +43,41 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                debugPrint('Get route button clicked');
-                Navigator.pushNamed(context, '/getPage');
-              },
-              child: const Text('Get route'),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Container(
+                width: 250,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    debugPrint('Get route button clicked');
+                    Navigator.pushNamed(context, '/getPage');
+                  },
+                  style: const ButtonStyle(
+                    backgroundColor:
+                        MaterialStatePropertyAll<Color>(Colors.orange),
+                  ),
+                  child: const Text('Get route'),
+                ),
+              ),
             ),
-            ElevatedButton(
-              child: const Text('Post route'),
-              onPressed: () {
-                debugPrint('Post route button clicked');
-                Navigator.pushNamed(context, '/postPage');
-              },
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Container(
+                width: 250,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    debugPrint('Post route button clicked');
+                    Navigator.pushNamed(context, '/postPage');
+                  },
+                  style: const ButtonStyle(
+                    backgroundColor:
+                        MaterialStatePropertyAll<Color>(Colors.orange),
+                  ),
+                  child: const Text('Post route'),
+                ),
+              ),
             )
           ],
         ),

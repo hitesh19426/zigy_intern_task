@@ -22,14 +22,14 @@ class User {
     required this.email,
     required this.firstName,
     this.lastName,
-    this.avatar,
+    required this.avatar,
   });
 
   int id;
   String email;
   String firstName;
   String? lastName;
-  String? avatar;
+  String avatar;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],

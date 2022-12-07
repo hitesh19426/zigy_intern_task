@@ -45,9 +45,30 @@ class _GetPageState extends State<GetPage> {
         child: ListView.builder(
           itemCount: users?.length,
           itemBuilder: (context, index) {
-            return Text(users![index].firstName);
+            return UserCard(user: users![index]);
           },
         ),
+      ),
+    );
+  }
+}
+
+class UserCard extends StatelessWidget {
+  final User user;
+  const UserCard({super.key, required this.user});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            leading: CircleAvatar(backgroundImage: NetworkImage(user.avatar)),
+            title: Text('${user.id} : ${user.firstName}  ${user.lastName}'),
+            subtitle: Text('Email: ${user.email}'),
+          ),
+        ],
       ),
     );
   }
