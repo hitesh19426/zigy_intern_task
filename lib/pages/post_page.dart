@@ -58,7 +58,7 @@ class _PostPageState extends State<PostPage> {
                     Text(
                       response,
                       textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.visible,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
