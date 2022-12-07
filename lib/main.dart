@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'pages/get_page.dart';
+import 'pages/post_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(primarySwatch: Colors.green),
+        routes: {
+          '/': (context) => const MyHomePage(title: 'My Home Page'),
+          '/getPage': (context) => const GetPage(),
+          '/postPage': (context) => const PostPage(),
+        });
   }
 }
 
@@ -30,20 +33,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
@@ -51,17 +44,22 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              onPressed: () {},
-              child: const Text('Enabled'),
+              onPressed: () {
+                debugPrint('Get route button clicked');
+                Navigator.pushNamed(context, '/getPage');
+              },
+              child: const Text('Get route'),
             ),
+            ElevatedButton(
+              child: const Text('Post route'),
+              onPressed: () {
+                debugPrint('Post route button clicked');
+                Navigator.pushNamed(context, '/postPage');
+              },
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
